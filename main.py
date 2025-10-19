@@ -7,7 +7,7 @@ from PyQt6.QtWidgets import (QComboBox, QMessageBox, QPushButton, QLabel, QLineE
                              QStyleFactory, QFormLayout, QSpinBox, QListWidget)
 import sys
 import items
-from items import dark_mode_stylesheet
+from style_sheet import dark_mode_stylesheet
 import json
 
 
@@ -20,7 +20,6 @@ class MainWindow(QMainWindow):
 
 
         self.items = self.load_from_json('items.json')
-        print(f"Loaded Data: {self.items}")
 
 
         master = QWidget(self)
@@ -35,6 +34,7 @@ class MainWindow(QMainWindow):
         self.group = QComboBox(self)
         self.list = QComboBox(self)
         self.grouping()
+        self.listing()
 
 
         self.choice = QComboBox(self)
@@ -69,14 +69,12 @@ class MainWindow(QMainWindow):
         self.group.clear()
         for group in self.items:
             self.group.addItem(group)
-        print("Grouping done")
 
     def listing(self):
         selected_group = self.group.currentText()
         if selected_group in self.items:
             for resource in self.items['Components']:
                 self.list.addItem(resource)
-        print(f"Function called for group: {selected_group}")
 
     def load_from_json(self, file_path):
         with open(file_path, 'r') as file:
@@ -96,6 +94,7 @@ class MainWindow(QMainWindow):
             hqm = amount * hqms * 0.8
         elif location == "Monument":
             scrap = amount * scraps * 1.2
+            hqm = amount * hqms * 1.2
         else:
             pass
 
