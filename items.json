@@ -1,0 +1,16 @@
+{
+    "Components":{
+        "Tech Trash": {
+            "scrap": 20,
+            "hqm":  1
+        },
+        "Electric Fuse": {
+            "scrap":  20,
+            "hqm": 0
+        },
+        "Gear": {
+            "scrap": 10,
+            "hqm": 0
+        }
+    }
+}

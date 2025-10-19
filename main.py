@@ -19,6 +19,10 @@ class MainWindow(QMainWindow):
         self.setStyleSheet(dark_mode_stylesheet())
 
 
+        self.items = self.load_from_json('items.json')
+        print(f"Loaded Data: {self.items}")
+
+
         master = QWidget(self)
         self.setCentralWidget(master)
         layout = QFormLayout(master)
@@ -29,6 +33,8 @@ class MainWindow(QMainWindow):
 
 
         self.group = QComboBox(self)
+        self.list = QComboBox(self)
+        self.grouping()
 
 
         self.choice = QComboBox(self)
@@ -37,21 +43,64 @@ class MainWindow(QMainWindow):
 
 
         self.calculate = QPushButton("Calculate", self)
+        self.calculate.clicked.connect(self.calculator)
 
         self.result = QLabel(self)
 
 
         # Add widgets to the layout with labels
-        layout.addRow("Item:", self.group)
-        layout.addRow("Amount:", self.amount)
+        layout.addRow("Group:", self.group)
+        layout.addRow("Item:", self.list)
         layout.addRow("Location:", self.choice)
+        layout.addRow("Amount:", self.amount)
         layout.addRow(self.calculate)
         layout.addRow("Result:", self.result)
+
+        self.group.currentIndexChanged.connect(self.listing)
 
 
         # Add some spacing and padding
         layout.setVerticalSpacing(20)
         layout.setContentsMargins(20, 20, 20, 20)
+
+
+
+    def grouping(self):
+        self.group.clear()
+        for group in self.items:
+            self.group.addItem(group)
+        print("Grouping done")
+
+    def listing(self):
+        selected_group = self.group.currentText()
+        if selected_group in self.items:
+            for resource in self.items['Components']:
+                self.list.addItem(resource)
+        print(f"Function called for group: {selected_group}")
+
+    def load_from_json(self, file_path):
+        with open(file_path, 'r') as file:
+            return json.load(file)
+
+    def calculator(self):
+        group = self.group.currentText()
+        resource = self.list.currentText()
+        amount = self.amount.value()
+        location = self.choice.currentText()
+
+        scraps = self.items[group][resource]["scrap"]
+        hqms = self.items[group][resource]["hqm"]
+
+        if location == "Safe-Zone":
+            scrap = amount * scraps * 0.8
+            hqm = amount * hqms * 0.8
+        elif location == "Monument":
+            scrap = amount * scraps * 1.2
+        else:
+            pass
+
+        self.result.setText(f"Scrap: {int(scrap)} and HQM: {int(hqm)}")
+
 
 
 
