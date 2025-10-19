@@ -1,54 +1,57 @@
 from PyQt6 import QtGui, QtCore
 from PyQt6.QtCore import Qt
-from PyQt6.QtGui import QPixmap, QIcon
+from PyQt6.QtGui import QPixmap, QIcon, QAction
 from PyQt6.QtWidgets import (QComboBox, QMessageBox, QPushButton, QLabel, QLineEdit, QGridLayout, QApplication,
-        QMainWindow, QGridLayout, QWidget, QTableWidget, QToolBar, QTextEdit, QStatusBar,
-        QTableWidgetItem, QDialog, QPlainTextEdit, QVBoxLayout, QSizePolicy, QHBoxLayout,
-        QStyleFactory)
+                             QMainWindow, QGridLayout, QWidget, QTableWidget, QToolBar, QTextEdit, QStatusBar,
+                             QTableWidgetItem, QDialog, QPlainTextEdit, QVBoxLayout, QSizePolicy, QHBoxLayout,
+                             QStyleFactory, QFormLayout, QSpinBox, QListWidget)
 import sys
-
+import items
+from items import dark_mode_stylesheet
+import json
 
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Scrappy")
-        self.setGeometry(300, 300, 900, 300)
+        self.setGeometry(300, 300, 700, 300)
+        self.setStyleSheet(dark_mode_stylesheet())
 
 
-        # Labels, Buttons, etc...
-        label_one = QLabel("1")
-        label_two = QLabel("2")
-        label_three = QLabel("3")
-
-        button_one = QPushButton("Button One")
-        button_two = QPushButton("Button Two")
-        button_three = QPushButton("Button Three")
+        master = QWidget(self)
+        self.setCentralWidget(master)
+        layout = QFormLayout(master)
 
 
-        # Master Layout and Rows
-        master = QVBoxLayout()
-
-        row_one = QHBoxLayout()
-        row_two = QHBoxLayout()
-        row_three = QHBoxLayout()
+        self.amount = QSpinBox(self)
+        self.amount.setRange(0, 500)
 
 
-        # Main Display
-        row_one.addWidget(label_one, alignment=Qt.AlignmentFlag.AlignLeft)
-        row_one.addWidget(label_two, alignment=Qt.AlignmentFlag.AlignLeft)
-        row_one.addWidget(label_three, alignment=Qt.AlignmentFlag.AlignCenter)
-        row_two.addWidget(button_one, alignment=Qt.AlignmentFlag.AlignCenter)
-        row_two.addWidget(button_two, alignment=Qt.AlignmentFlag.AlignCenter)
-        row_two.addWidget(button_three, alignment=Qt.AlignmentFlag.AlignCenter)
+        self.group = QComboBox(self)
 
-        master.addLayout(row_one)
-        master.addLayout(row_two)
-        master.addLayout(row_three)
 
-        widget = QWidget(self)
-        widget.setLayout(master)
-        self.setCentralWidget(widget)
+        self.choice = QComboBox(self)
+        self.choice.addItem("Safe-Zone")
+        self.choice.addItem("Monument")
+
+
+        self.calculate = QPushButton("Calculate", self)
+
+        self.result = QLabel(self)
+
+
+        # Add widgets to the layout with labels
+        layout.addRow("Item:", self.group)
+        layout.addRow("Amount:", self.amount)
+        layout.addRow("Location:", self.choice)
+        layout.addRow(self.calculate)
+        layout.addRow("Result:", self.result)
+
+
+        # Add some spacing and padding
+        layout.setVerticalSpacing(20)
+        layout.setContentsMargins(20, 20, 20, 20)
 
 
 
