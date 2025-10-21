@@ -8,9 +8,66 @@
             "scrap":  20,
             "hqm": 0
         },
-        "Gear": {
-            "scrap": 10,
-            "hqm": 0
+        "Targeting Computer": {
+          "tech trash": 2,
+          "metal fragments": 60,
+          "hqm": 2
+        },
+        "CCTV Camera": {
+          "tech trash": 2,
+          "hqm": 2
+        },
+        "Sheet Metal": {
+          "scrap": 8,
+          "metal fragments": 100,
+          "hqm": 1
+        },
+        "Road Sign": {
+          "scrap": 5,
+          "hqm": 1
+        },
+        "Metal Pipe": {
+          "scrap": 5,
+          "hqm": 1
+        },
+        "Metal Blade": {
+          "scrap": 2,
+          "metal fragments": 15
+        },
+        "Metal Spring": {
+          "scrap": 10,
+          "hqm": 1
+        },
+        "Gears": {
+          "scrap": 10,
+          "metal fragments": 13
+        },
+        "Propane Tank": {
+          "scrap": 1,
+          "metal fragments": 50
+        },
+        "Tarp": {
+          "cloth": 50
+        },
+        "Sewing Kit": {
+          "cloth": 10,
+          "rope": 2
+        },
+        "Rope": {
+          "cloth": 15
+        },
+        "Rifle Body": {
+          "scrap": 25,
+          "hqm": 2
+        },
+        "SMG Body": {
+          "scrap": 15,
+          "hqm": 2
+        },
+        "Semi Body": {
+          "scrap": 15,
+          "hqm": 2,
+          "metal fragments": 75
         }
     }
 }
