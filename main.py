@@ -48,7 +48,8 @@ class MainWindow(QMainWindow):
         self.calculate = QPushButton("Calculate", self)
         self.calculate.clicked.connect(self.calculator)
 
-        self.result = QLabel(self)
+        self.result = QTextEdit(self)
+        self.result.setReadOnly(True)
 
 
         # Add widgets to the layout with labels
@@ -57,7 +58,7 @@ class MainWindow(QMainWindow):
         layout.addRow("Location:", self.choice)
         layout.addRow("Amount:", self.amount)
         layout.addRow(self.calculate)
-        layout.addRow("Result:", self.result)
+        layout.addRow(self.result)
 
         self.group.currentIndexChanged.connect(self.listing)
 
@@ -99,7 +100,7 @@ class MainWindow(QMainWindow):
         for key, value in my_dict.items():
             resources += f"{int(value)} {key} "
 
-        self.result.setText(f"You recycled {amount} {resource} for: {resources}at {location}")
+        self.result.setText(f"You recycled {amount} {resource} for: {resources}at {location}.")
 
 
 
