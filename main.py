@@ -6,9 +6,13 @@ from PyQt6.QtWidgets import (QComboBox, QMessageBox, QPushButton, QLabel, QLineE
                              QTableWidgetItem, QDialog, QPlainTextEdit, QVBoxLayout, QSizePolicy, QHBoxLayout,
                              QStyleFactory, QFormLayout, QSpinBox, QListWidget)
 import sys
-import items
 from style_sheet import dark_mode_stylesheet
 import json
+
+
+def load_from_json(file_path):
+    with open(file_path, 'r') as file:
+        return json.load(file)
 
 
 class MainWindow(QMainWindow):
@@ -18,8 +22,7 @@ class MainWindow(QMainWindow):
         self.setGeometry(300, 300, 700, 300)
         self.setStyleSheet(dark_mode_stylesheet())
 
-
-        self.items = self.load_from_json('items.json')
+        self.items = load_from_json('items.json')
 
 
         master = QWidget(self)
@@ -76,29 +79,27 @@ class MainWindow(QMainWindow):
             for resource in self.items['Components']:
                 self.list.addItem(resource)
 
-    def load_from_json(self, file_path):
-        with open(file_path, 'r') as file:
-            return json.load(file)
-
     def calculator(self):
-        group = self.group.currentText()
         resource = self.list.currentText()
         amount = self.amount.value()
         location = self.choice.currentText()
 
-        scraps = self.items[group][resource]["scrap"]
-        hqms = self.items[group][resource]["hqm"]
+        comps = self.items.get('Components')
+        res = comps.get(resource)
 
-        if location == "Safe-Zone":
-            scrap = amount * scraps * 0.8
-            hqm = amount * hqms * 0.8
-        elif location == "Monument":
-            scrap = amount * scraps * 1.2
-            hqm = amount * hqms * 1.2
-        else:
-            pass
 
-        self.result.setText(f"Scrap: {int(scrap)} and HQM: {int(hqm)}")
+        my_dict = {}
+
+        for key, value in res.items():
+            my_dict[key] = value * amount * 0.8
+            if location == 'Monument':
+                my_dict[key] = value * amount * 1.2
+
+        resources = ""
+        for key, value in my_dict.items():
+            resources += f"{int(value)} {key} "
+
+        self.result.setText(f"You recycled {amount} {resource} for: {resources}at {location}")
 
 
 

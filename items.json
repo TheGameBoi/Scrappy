@@ -1,73 +1,73 @@
 {
-    "Components":{
+    "Components" : {
         "Tech Trash": {
-            "scrap": 20,
-            "hqm":  1
+            "Scrap": 20,
+            "HQM":  1
         },
         "Electric Fuse": {
-            "scrap":  20,
-            "hqm": 0
+            "Scrap":  20,
+            "HQM": 0
         },
         "Targeting Computer": {
-          "tech trash": 2,
-          "metal fragments": 60,
-          "hqm": 2
+          "Tech Trash": 2,
+          "Metal Fragments": 60,
+          "HQM": 2
         },
         "CCTV Camera": {
-          "tech trash": 2,
-          "hqm": 2
+          "Tech Trash": 2,
+          "HQM": 2
         },
         "Sheet Metal": {
-          "scrap": 8,
-          "metal fragments": 100,
-          "hqm": 1
+          "Scrap": 8,
+          "Metal Fragments": 100,
+          "HQM": 1
         },
         "Road Sign": {
-          "scrap": 5,
-          "hqm": 1
+          "Scrap": 5,
+          "HQM": 1
         },
         "Metal Pipe": {
-          "scrap": 5,
-          "hqm": 1
+          "Scrap": 5,
+          "HQM": 1
         },
         "Metal Blade": {
-          "scrap": 2,
-          "metal fragments": 15
+          "Scrap": 2,
+          "Metal Fragments": 15
         },
         "Metal Spring": {
-          "scrap": 10,
-          "hqm": 1
+          "Scrap": 10,
+          "HQM": 1
         },
         "Gears": {
-          "scrap": 10,
-          "metal fragments": 13
+          "Scrap": 10,
+          "Metal Fragments": 13
         },
         "Propane Tank": {
-          "scrap": 1,
-          "metal fragments": 50
+          "Scrap": 1,
+          "Metal Fragments": 50
         },
         "Tarp": {
-          "cloth": 50
+          "Cloth": 50
         },
         "Sewing Kit": {
-          "cloth": 10,
-          "rope": 2
+          "Cloth": 10,
+          "Rope": 2
         },
         "Rope": {
-          "cloth": 15
+          "Cloth": 15
         },
         "Rifle Body": {
-          "scrap": 25,
-          "hqm": 2
+          "Scrap": 25,
+          "HQM": 2
         },
         "SMG Body": {
-          "scrap": 15,
-          "hqm": 2
+          "Scrap": 15,
+          "HQM": 2
         },
         "Semi Body": {
-          "scrap": 15,
-          "hqm": 2,
-          "metal fragments": 75
+          "Scrap": 15,
+          "HQM": 2,
+          "Metal Fragments": 75
         }
     }
 }
