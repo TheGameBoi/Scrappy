@@ -80,6 +80,7 @@ class MainWindow(QMainWindow):
             for resource in self.items['Components']:
                 self.list.addItem(resource)
 
+
     def calculator(self):
         resource = self.list.currentText()
         amount = self.amount.value()
@@ -88,19 +89,26 @@ class MainWindow(QMainWindow):
         comps = self.items.get('Components')
         res = comps.get(resource)
 
-
         my_dict = {}
 
         for key, value in res.items():
             my_dict[key] = value * amount * 0.8
             if location == 'Monument':
                 my_dict[key] = value * amount * 1.2
+        split = ', '.join(f"{int(v)} {k}" for k, v in my_dict.items())
+        new_split = [f"{int(v)} {k}" for k, v in my_dict.items()]
+        new_var = ""
+        for i, v in enumerate(new_split):
+            if i == len(new_split) - 1:
+                new_var += f'and {v}'
+            else:
+                new_var += f'{v}, '
 
-        resources = ""
-        for key, value in my_dict.items():
-            resources += f"{int(value)} {key} "
 
-        self.result.setText(f"You recycled {amount} {resource} for: {resources}at {location}.")
+
+
+
+        self.result.setText(f"You recycled {amount} {resource} for {new_var} at {location}.")
 
 
 
