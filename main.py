@@ -18,12 +18,12 @@ def load_from_json(file_path):
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Scrappy")
+        self.setWindowTitle("Recycler")
         self.setGeometry(300, 300, 700, 300)
         self.setStyleSheet(dark_mode_stylesheet())
 
-        self.items = load_from_json('items.json')
 
+        self.items = load_from_json('items.json')
 
         master = QWidget(self)
         self.setCentralWidget(master)
@@ -31,36 +31,34 @@ class MainWindow(QMainWindow):
 
         self.amount = QSpinBox(self)
         self.amount.setRange(0, 500)
-        self.amount.setFixedWidth(175)
 
         self.group = QComboBox(self)
-        self.group.setFixedWidth(175)
+        self.group.setFixedWidth(200)
         self.list = QComboBox(self)
-        self.list.setFixedWidth(175)
+        self.list.setFixedWidth(200)
+
         self.grouping()
         self.listing()
 
         self.choice = QComboBox(self)
         self.choice.addItem("Safe-Zone")
         self.choice.addItem("Monument")
-        self.choice.setFixedWidth(175)
 
         self.calculate = QPushButton("Calculate", self)
-        self.calculate.setFixedWidth(175)
         self.calculate.clicked.connect(self.calculator)
 
         self.result = QTextEdit(self)
         self.result.setReadOnly(True)
-        self.result.setFixedWidth(300)
-        self.result.setFixedHeight(50)
+        self.result.setFixedHeight(125)
+
 
         # Add widgets to the layout with labels
         layout.addWidget(self.group, 0, 0)
         layout.addWidget(self.list, 0, 1)
         layout.addWidget(self.choice, 1, 0)
         layout.addWidget(self.amount, 1, 1)
-        layout.addWidget(self.calculate, 2, 0)
-        layout.addWidget(self.result, 2, 1)
+        layout.addWidget(self.calculate, 2, 0, 1, 2)
+        layout.addWidget(self.result, 3, 0, 1, 2)
 
         self.group.currentIndexChanged.connect(self.listing)
 
@@ -88,7 +86,8 @@ class MainWindow(QMainWindow):
         my_dict = {}
 
         for key, value in res.items():
-            my_dict[key] = value * amount * 0.8
+            if location == 'Safe-Zone':
+                my_dict[key] = value * amount * 0.8
             if location == 'Monument':
                 my_dict[key] = value * amount * 1.2
         split = ', '.join(f"{int(v)} {k}" for k, v in my_dict.items())
