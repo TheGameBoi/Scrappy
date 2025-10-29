@@ -19,6 +19,7 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Recycler")
+        self.setWindowIcon(QIcon('imgs/recycler.ico'))
         self.setGeometry(300, 300, 700, 300)
         self.setStyleSheet(dark_mode_stylesheet())
 
