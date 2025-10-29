@@ -27,52 +27,49 @@ class MainWindow(QMainWindow):
 
         master = QWidget(self)
         self.setCentralWidget(master)
-        layout = QFormLayout(master)
-
+        layout = QGridLayout(master)
 
         self.amount = QSpinBox(self)
         self.amount.setRange(0, 500)
-
+        self.amount.setFixedWidth(175)
 
         self.group = QComboBox(self)
+        self.group.setFixedWidth(175)
         self.list = QComboBox(self)
+        self.list.setFixedWidth(175)
         self.grouping()
         self.listing()
-
 
         self.choice = QComboBox(self)
         self.choice.addItem("Safe-Zone")
         self.choice.addItem("Monument")
-
+        self.choice.setFixedWidth(175)
 
         self.calculate = QPushButton("Calculate", self)
+        self.calculate.setFixedWidth(175)
         self.calculate.clicked.connect(self.calculator)
 
         self.result = QTextEdit(self)
         self.result.setReadOnly(True)
-
+        self.result.setFixedWidth(300)
+        self.result.setFixedHeight(50)
 
         # Add widgets to the layout with labels
-        layout.addRow("Group:", self.group)
-        layout.addRow("Item:", self.list)
-        layout.addRow("Location:", self.choice)
-        layout.addRow("Amount:", self.amount)
-        layout.addRow(self.calculate)
-        layout.addRow(self.result)
+        layout.addWidget(self.group, 0, 0)
+        layout.addWidget(self.list, 0, 1)
+        layout.addWidget(self.choice, 1, 0)
+        layout.addWidget(self.amount, 1, 1)
+        layout.addWidget(self.calculate, 2, 0)
+        layout.addWidget(self.result, 2, 1)
 
         self.group.currentIndexChanged.connect(self.listing)
-
-
-        # Add some spacing and padding
-        layout.setVerticalSpacing(20)
-        layout.setContentsMargins(20, 20, 20, 20)
-
 
 
     def grouping(self):
         self.group.clear()
         for group in self.items:
             self.group.addItem(group)
+
 
     def listing(self):
         selected_group = self.group.currentText()
@@ -85,7 +82,6 @@ class MainWindow(QMainWindow):
         resource = self.list.currentText()
         amount = self.amount.value()
         location = self.choice.currentText()
-
         comps = self.items.get('Components')
         res = comps.get(resource)
 
@@ -103,13 +99,7 @@ class MainWindow(QMainWindow):
                 new_var += f'and {v}'
             else:
                 new_var += f'{v}, '
-
-
-
-
-
         self.result.setText(f"You recycled {amount} {resource} for {new_var} at {location}.")
-
 
 
 
