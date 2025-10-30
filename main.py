@@ -1,3 +1,5 @@
+from idlelib.help_about import AboutDialog
+
 from PyQt6 import QtGui, QtCore
 from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QPixmap, QIcon, QAction
@@ -32,7 +34,13 @@ class MainWindow(QMainWindow):
         self.setStatusBar(QStatusBar(master))
         self.menuBar()
         self.file_menu = self.menuBar().addMenu('&File')
+        self.file_action = QAction('Help', self)
+        self.file_menu.addAction(self.file_action)
+
         self.about_menu = self.menuBar().addMenu('&About')
+        self.about_action = QAction('Info', self)
+        self.about_menu.addAction(self.about_action)
+        self.about_action.triggered.connect(self.about)
 
         self.amount = QSpinBox(self)
         self.amount.setRange(0, 500)
@@ -65,9 +73,8 @@ class MainWindow(QMainWindow):
         layout.addWidget(self.result, 3, 0, 1, 2)
 
 
-    def help_menu(self):
-        dialog = QMessageBox(self)
-        dialog.setWindowTitle("Help")
+    def about(self):
+        dialog = AboutDialog()
         dialog.exec()
 
 
@@ -107,6 +114,19 @@ class MainWindow(QMainWindow):
             else:
                 new_var += f'{v}, '
         self.result.setText(f"You recycled {amount} {resource} for {new_var} at {location}.")
+
+class AboutDialog(QMessageBox):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("About Us")
+        self.setGeometry(300, 300, 400, 300)
+        self.setWindowIcon(QIcon('imgs/info.ico'))
+        contents = """
+        Recycler v0.1
+        Made by TheGameBoi
+        """
+        self.setText(contents)
+
 
 
 
