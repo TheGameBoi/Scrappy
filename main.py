@@ -4,7 +4,7 @@ from PyQt6.QtGui import QPixmap, QIcon, QAction
 from PyQt6.QtWidgets import (QComboBox, QMessageBox, QPushButton, QLabel, QLineEdit, QGridLayout, QApplication,
                              QMainWindow, QGridLayout, QWidget, QTableWidget, QToolBar, QTextEdit, QStatusBar,
                              QTableWidgetItem, QDialog, QPlainTextEdit, QVBoxLayout, QSizePolicy, QHBoxLayout,
-                             QStyleFactory, QFormLayout, QSpinBox, QListWidget)
+                             QStyleFactory, QFormLayout, QSpinBox, QListWidget, QMenu)
 import sys
 from style_sheet import dark_mode_stylesheet
 import json
@@ -20,9 +20,8 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.setWindowTitle("Recycler")
         self.setWindowIcon(QIcon('imgs/recycler.ico'))
-        self.setGeometry(300, 300, 700, 300)
+        self.setGeometry(300, 300, 400, 280)
         self.setStyleSheet(dark_mode_stylesheet())
-
 
         self.items = load_from_json('items.json')
 
@@ -30,14 +29,19 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(master)
         layout = QGridLayout(master)
 
+        self.setStatusBar(QStatusBar(master))
+        self.menuBar()
+        self.file_menu = self.menuBar().addMenu('&File')
+        self.about_menu = self.menuBar().addMenu('&About')
+
         self.amount = QSpinBox(self)
         self.amount.setRange(0, 500)
 
         self.group = QComboBox(self)
         self.group.setFixedWidth(200)
+        self.group.currentIndexChanged.connect(self.listing)
         self.list = QComboBox(self)
         self.list.setFixedWidth(200)
-
         self.grouping()
         self.listing()
 
@@ -50,10 +54,9 @@ class MainWindow(QMainWindow):
 
         self.result = QTextEdit(self)
         self.result.setReadOnly(True)
-        self.result.setFixedHeight(125)
+        self.result.setFixedHeight(100)
 
-
-        # Add widgets to the layout with labels
+        # Add widgets to the layout
         layout.addWidget(self.group, 0, 0)
         layout.addWidget(self.list, 0, 1)
         layout.addWidget(self.choice, 1, 0)
@@ -61,7 +64,11 @@ class MainWindow(QMainWindow):
         layout.addWidget(self.calculate, 2, 0, 1, 2)
         layout.addWidget(self.result, 3, 0, 1, 2)
 
-        self.group.currentIndexChanged.connect(self.listing)
+
+    def help_menu(self):
+        dialog = QMessageBox(self)
+        dialog.setWindowTitle("Help")
+        dialog.exec()
 
 
     def grouping(self):
