@@ -22,7 +22,7 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.setWindowTitle("Recycler")
         self.setWindowIcon(QIcon('imgs/recycler.ico'))
-        self.setGeometry(300, 300, 400, 280)
+        self.setGeometry(300, 300, 680, 280)
         self.setStyleSheet(dark_mode_stylesheet())
 
         self.items = load_from_json('items.json')
@@ -36,6 +36,7 @@ class MainWindow(QMainWindow):
         self.file_menu = self.menuBar().addMenu('&File')
         self.file_action = QAction('Help', self)
         self.file_menu.addAction(self.file_action)
+        self.file_action.triggered.connect(self.help)
 
         self.about_menu = self.menuBar().addMenu('&About')
         self.about_action = QAction('Info', self)
@@ -62,7 +63,7 @@ class MainWindow(QMainWindow):
 
         self.result = QTextEdit(self)
         self.result.setReadOnly(True)
-        self.result.setFixedHeight(100)
+        self.result.setFixedHeight(70)
 
         # Add widgets to the layout
         layout.addWidget(self.group, 0, 0)
@@ -75,6 +76,10 @@ class MainWindow(QMainWindow):
 
     def about(self):
         dialog = AboutDialog()
+        dialog.exec()
+
+    def help(self):
+        dialog = HelpDialog()
         dialog.exec()
 
 
@@ -115,6 +120,8 @@ class MainWindow(QMainWindow):
                 new_var += f'{v}, '
         self.result.setText(f"You recycled {amount} {resource} for {new_var} at {location}.")
 
+
+
 class AboutDialog(QMessageBox):
     def __init__(self):
         super().__init__()
@@ -124,6 +131,19 @@ class AboutDialog(QMessageBox):
         contents = """
         Recycler v0.1
         Made by TheGameBoi
+        """
+        self.setText(contents)
+
+
+class HelpDialog(QMessageBox):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Help")
+        self.setWindowIcon(QIcon('imgs/help.ico'))
+        contents = """
+        1.  Use the Drop-down menus, select the resources/location needed.
+        2.  Enter the amount of resources you have/want to recycle.
+        3.  Click "Calculate" and view what you got from recycling!
         """
         self.setText(contents)
 
