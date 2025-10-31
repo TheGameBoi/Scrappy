@@ -33,6 +33,7 @@ class MainWindow(QMainWindow):
 
         self.setStatusBar(QStatusBar(master))
         self.menuBar()
+
         self.file_menu = self.menuBar().addMenu('&File')
         self.file_action = QAction('Help', self)
         self.file_menu.addAction(self.file_action)
@@ -128,10 +129,8 @@ class AboutDialog(QMessageBox):
         self.setWindowTitle("About Us")
         self.setGeometry(300, 300, 400, 300)
         self.setWindowIcon(QIcon('imgs/info.ico'))
-        contents = """
-        Recycler v0.1
-        Made by TheGameBoi
-        """
+        contents = ("Scrappy v0.1" + "\n"
+                   "Made by TheGameBoi")
         self.setText(contents)
 
 
@@ -140,11 +139,9 @@ class HelpDialog(QMessageBox):
         super().__init__()
         self.setWindowTitle("Help")
         self.setWindowIcon(QIcon('imgs/help.ico'))
-        contents = """
-        1.  Use the Drop-down menus, select the resources/location needed.
-        2.  Enter the amount of resources you have/want to recycle.
-        3.  Click "Calculate" and view what you got from recycling!
-        """
+        contents = ("1.  Use the Drop-down menus, select the resources/location needed." + "\n"
+        "2.  Enter the amount of resources you have/want to recycle." + "\n"
+        "3.  Click Calculate and view what you got from recycling!")
         self.setText(contents)
 
 
