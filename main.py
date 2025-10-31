@@ -1,5 +1,6 @@
-from idlelib.help_about import AboutDialog
-
+import sys
+import json
+from style_sheet import dark_mode_stylesheet
 from PyQt6 import QtGui, QtCore
 from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QPixmap, QIcon, QAction
@@ -7,9 +8,7 @@ from PyQt6.QtWidgets import (QComboBox, QMessageBox, QPushButton, QLabel, QLineE
                              QMainWindow, QGridLayout, QWidget, QTableWidget, QToolBar, QTextEdit, QStatusBar,
                              QTableWidgetItem, QDialog, QPlainTextEdit, QVBoxLayout, QSizePolicy, QHBoxLayout,
                              QStyleFactory, QFormLayout, QSpinBox, QListWidget, QMenu)
-import sys
-from style_sheet import dark_mode_stylesheet
-import json
+
 
 
 def load_from_json(file_path):
@@ -35,9 +34,13 @@ class MainWindow(QMainWindow):
         self.menuBar()
 
         self.file_menu = self.menuBar().addMenu('&File')
-        self.file_action = QAction('Help', self)
-        self.file_menu.addAction(self.file_action)
-        self.file_action.triggered.connect(self.help)
+        self.file_help = QAction('Help', self)
+        self.file_menu.addAction(self.file_help)
+        self.file_help.triggered.connect(self.help)
+        self.file_bug = QAction('Report a Bug', self)
+        self.file_menu.addAction(self.file_bug)
+        self.file_menu.triggered.connect(self.debugger)
+
 
         self.about_menu = self.menuBar().addMenu('&About')
         self.about_action = QAction('Info', self)
@@ -82,6 +85,10 @@ class MainWindow(QMainWindow):
     def help(self):
         dialog = HelpDialog()
         dialog.exec()
+
+    def debugger(self):
+        self.debug = BugReport()
+        self.debug.show()
 
 
     def grouping(self):
@@ -145,6 +152,34 @@ class HelpDialog(QMessageBox):
         self.setText(contents)
 
 
+class BugReport(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Bug Report")
+        self.setWindowIcon(QIcon('imgs/bug_report.ico'))
+        self.setGeometry(300, 300, 400, 100)
+
+        master = QWidget(self)
+        self.setCentralWidget(master)
+        layout = QFormLayout(master)
+
+
+        self.user = QLineEdit(self)
+        self.user.setPlaceholderText("Username")
+
+        self.email = QLineEdit(self)
+        self.email.setPlaceholderText("Email")
+
+        self.message = QLineEdit(self)
+        self.message.setPlaceholderText("Message")
+
+        self.submit = QPushButton(self)
+        self.submit.setText("Send Report")
+
+        layout.addRow("Username: ", self.user)
+        layout.addRow("Email:", self.email)
+        layout.addRow("Message: ", self.message)
+        layout.addRow(self.submit)
 
 
 app = QApplication(sys.argv)
