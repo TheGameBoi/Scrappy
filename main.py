@@ -39,7 +39,7 @@ class MainWindow(QMainWindow):
         self.file_help.triggered.connect(self.help)
         self.file_bug = QAction('Report a Bug', self)
         self.file_menu.addAction(self.file_bug)
-        self.file_menu.triggered.connect(self.debugger)
+        self.file_bug.triggered.connect(self.debugger)
 
 
         self.about_menu = self.menuBar().addMenu('&About')
@@ -70,12 +70,12 @@ class MainWindow(QMainWindow):
         self.result.setFixedHeight(70)
 
         # Add widgets to the layout
-        layout.addWidget(self.group, 0, 0)
-        layout.addWidget(self.list, 0, 1)
-        layout.addWidget(self.choice, 1, 0)
-        layout.addWidget(self.amount, 1, 1)
-        layout.addWidget(self.calculate, 2, 0, 1, 2)
-        layout.addWidget(self.result, 3, 0, 1, 2)
+        layout.addWidget(self.result, 0, 0, 1, 2)
+        layout.addWidget(self.group, 2, 0)
+        layout.addWidget(self.list, 2, 1)
+        layout.addWidget(self.choice, 3, 0)
+        layout.addWidget(self.amount, 3, 1)
+        layout.addWidget(self.calculate, 4, 0, 1, 2)
 
 
     def about(self):
