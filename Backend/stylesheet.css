@@ -1,0 +1,42 @@
+QWidget {
+        background-color: #2C2C2C;
+    }
+    QLineEdit {
+        background-color: "Gray";
+    }
+    QTextEdit {
+        background-color: #404040;
+        color: "White";
+        font-size: 13px;
+    }
+    QComboBox {
+        background-color: #2C2C2C;
+        color: "White"
+    }
+    QPushButton {
+        background-color: #222222;
+        font-size: 14px;
+        color: "White";
+    }
+    QSpinBox {
+        background-color: #2C2C2C;
+        color: "White"
+    }
+    QPushButton:hover {
+        background-color: #404040;
+    }
+    QComboBox:hover {
+        background-color: #404040;
+    }
+    QSpinBox:hover {
+        background-color: #404040;
+    }
+    QMenuBar {
+        color: "White";
+    }
+    QMenu:item {
+        color: "White";
+    }
+    QMessageBox {
+        color: "White";
+    }

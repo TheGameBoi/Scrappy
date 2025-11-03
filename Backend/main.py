@@ -1,6 +1,5 @@
 import sys
 import json
-from style_sheet import dark_mode_stylesheet
 from PyQt6 import QtGui, QtCore
 from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QPixmap, QIcon, QAction
@@ -20,11 +19,11 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Recycler")
-        self.setWindowIcon(QIcon('imgs/recycler.ico'))
+        self.setWindowIcon(QIcon('./imgs/recycler.ico'))
         self.setGeometry(300, 300, 680, 280)
-        self.setStyleSheet(dark_mode_stylesheet())
 
-        self.items = load_from_json('items.json')
+        self.items = load_from_json('Backend/items.json')
+        self.style = self.load_stylesheet('Backend/stylesheet.css')
 
         master = QWidget(self)
         self.setCentralWidget(master)
@@ -34,10 +33,10 @@ class MainWindow(QMainWindow):
         self.menuBar()
 
         self.file_menu = self.menuBar().addMenu('&File')
-        self.file_help = QAction('Help', self)
+        self.file_help = QAction("&Help", self)
         self.file_menu.addAction(self.file_help)
         self.file_help.triggered.connect(self.help)
-        self.file_bug = QAction('Report a Bug', self)
+        self.file_bug = QAction('&Report a Bug', self)
         self.file_menu.addAction(self.file_bug)
         self.file_bug.triggered.connect(self.debugger)
 
@@ -59,7 +58,7 @@ class MainWindow(QMainWindow):
         self.listing()
 
         self.choice = QComboBox(self)
-        self.choice.addItem("Safe-Zone")
+        self.choice.addItem("&Safe-Zone")
         self.choice.addItem("Monument")
 
         self.calculate = QPushButton("Calculate", self)
@@ -76,6 +75,10 @@ class MainWindow(QMainWindow):
         layout.addWidget(self.choice, 3, 0)
         layout.addWidget(self.amount, 3, 1)
         layout.addWidget(self.calculate, 4, 0, 1, 2)
+
+    def load_stylesheet(self, file_path):
+        with open(file_path, 'r') as file:
+            return app.setStyleSheet(file.read())
 
 
     def about(self):
@@ -135,17 +138,23 @@ class AboutDialog(QMessageBox):
         super().__init__()
         self.setWindowTitle("About Us")
         self.setGeometry(300, 300, 400, 300)
-        self.setWindowIcon(QIcon('imgs/info.ico'))
+        self.setWindowIcon(QIcon('../imgs/info.ico'))
         contents = ("Scrappy v0.1" + "\n"
                    "Made by TheGameBoi")
         self.setText(contents)
+
+        def load_stylesheet(self, file_path):
+            with open(file_path, 'r') as file:
+                return app.setStyleSheet(file.read())
+
+        self.style()
 
 
 class HelpDialog(QMessageBox):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Help")
-        self.setWindowIcon(QIcon('imgs/help.ico'))
+        self.setWindowIcon(QIcon('../imgs/help.ico'))
         contents = ("1.  Use the Drop-down menus, select the resources/location needed." + "\n"
         "2.  Enter the amount of resources you have/want to recycle." + "\n"
         "3.  Click Calculate and view what you got from recycling!")
@@ -156,7 +165,7 @@ class BugReport(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Bug Report")
-        self.setWindowIcon(QIcon('imgs/bug_report.ico'))
+        self.setWindowIcon(QIcon('../imgs/bug_report.ico'))
         self.setGeometry(300, 300, 400, 100)
 
         master = QWidget(self)
