@@ -1,12 +1,12 @@
 import sys
 import json
 from PyQt6 import QtGui, QtCore
-from PyQt6.QtCore import Qt
+from PyQt6.QtCore import Qt, QSettings
 from PyQt6.QtGui import QPixmap, QIcon, QAction
 from PyQt6.QtWidgets import (QComboBox, QMessageBox, QPushButton, QLabel, QLineEdit, QGridLayout, QApplication,
                              QMainWindow, QGridLayout, QWidget, QTableWidget, QToolBar, QTextEdit, QStatusBar,
                              QTableWidgetItem, QDialog, QPlainTextEdit, QVBoxLayout, QSizePolicy, QHBoxLayout,
-                             QStyleFactory, QFormLayout, QSpinBox, QListWidget, QMenu)
+                             QStyleFactory, QFormLayout, QSpinBox, QListWidget, QMenu, QCheckBox, QRadioButton)
 
 
 
@@ -18,7 +18,7 @@ def load_from_json(file_path):
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Recycler")
+        self.setWindowTitle("Scrappy")
         self.setWindowIcon(QIcon('./imgs/recycler.ico'))
         self.setGeometry(300, 300, 680, 280)
 
@@ -36,10 +36,6 @@ class MainWindow(QMainWindow):
         self.file_help = QAction("&Help", self)
         self.file_menu.addAction(self.file_help)
         self.file_help.triggered.connect(self.help)
-        self.file_bug = QAction('&Report a Bug', self)
-        self.file_menu.addAction(self.file_bug)
-        self.file_bug.triggered.connect(self.debugger)
-
 
         self.about_menu = self.menuBar().addMenu('&About')
         self.about_action = QAction('Info', self)
@@ -58,7 +54,7 @@ class MainWindow(QMainWindow):
         self.listing()
 
         self.choice = QComboBox(self)
-        self.choice.addItem("&Safe-Zone")
+        self.choice.addItem("Safe-Zone")
         self.choice.addItem("Monument")
 
         self.calculate = QPushButton("Calculate", self)
@@ -76,10 +72,13 @@ class MainWindow(QMainWindow):
         layout.addWidget(self.amount, 3, 1)
         layout.addWidget(self.calculate, 4, 0, 1, 2)
 
-    def load_stylesheet(self, file_path):
-        with open(file_path, 'r') as file:
-            return app.setStyleSheet(file.read())
 
+    def load_stylesheet(self, file_path):
+        if 1 > 0:
+            with open(file_path, 'r') as file:
+                return app.setStyleSheet(file.read())
+        else:
+            pass
 
     def about(self):
         dialog = AboutDialog()
@@ -139,14 +138,14 @@ class AboutDialog(QMessageBox):
         self.setWindowTitle("About Us")
         self.setGeometry(300, 300, 400, 300)
         self.setWindowIcon(QIcon('../imgs/info.ico'))
+        self.setStyleSheet("color: White;")
         contents = ("Scrappy v0.1" + "\n"
                    "Made by TheGameBoi")
         self.setText(contents)
 
-        def load_stylesheet(self, file_path):
+        def load_stylesheet(file_path):
             with open(file_path, 'r') as file:
                 return app.setStyleSheet(file.read())
-
         self.style()
 
 
@@ -154,41 +153,13 @@ class HelpDialog(QMessageBox):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Help")
-        self.setWindowIcon(QIcon('../imgs/help.ico'))
+        self.setWindowIcon(QIcon('./imgs/help.ico'))
+        self.setStyleSheet("color: white;")
         contents = ("1.  Use the Drop-down menus, select the resources/location needed." + "\n"
         "2.  Enter the amount of resources you have/want to recycle." + "\n"
         "3.  Click Calculate and view what you got from recycling!")
         self.setText(contents)
 
-
-class BugReport(QMainWindow):
-    def __init__(self):
-        super().__init__()
-        self.setWindowTitle("Bug Report")
-        self.setWindowIcon(QIcon('../imgs/bug_report.ico'))
-        self.setGeometry(300, 300, 400, 100)
-
-        master = QWidget(self)
-        self.setCentralWidget(master)
-        layout = QFormLayout(master)
-
-
-        self.user = QLineEdit(self)
-        self.user.setPlaceholderText("Username")
-
-        self.email = QLineEdit(self)
-        self.email.setPlaceholderText("Email")
-
-        self.message = QLineEdit(self)
-        self.message.setPlaceholderText("Message")
-
-        self.submit = QPushButton(self)
-        self.submit.setText("Send Report")
-
-        layout.addRow("Username: ", self.user)
-        layout.addRow("Email:", self.email)
-        layout.addRow("Message: ", self.message)
-        layout.addRow(self.submit)
 
 
 app = QApplication(sys.argv)

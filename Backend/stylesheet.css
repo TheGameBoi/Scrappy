@@ -28,15 +28,34 @@ QWidget {
     QComboBox:hover {
         background-color: #404040;
     }
+    QComboBox QAbstractItemView {
+        background-color: #2C2C2C;
+        color: "White";
+    }
     QSpinBox:hover {
         background-color: #404040;
+    }
+    QSpinBox:up-button, QSpinBox:down-button {
+        color: #404040;
+    }
+    QSpinBox:up-arrow, QSpinBox:down-arrow {
+        color: White;
+    }
+    QMenu {
+        color: "white";
     }
     QMenuBar {
         color: "White";
     }
-    QMenu:item {
-        color: "White";
+    QMenuBar:item:selected {
+        background-color: #404040;
+    }
+    QMenu:item:selected {
+        background-color: #404040;
     }
     QMessageBox {
+        color: "White";
+    }
+    QCheckBox {
         color: "White";
     }
