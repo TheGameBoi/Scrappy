@@ -88,10 +88,6 @@ class MainWindow(QMainWindow):
         dialog = HelpDialog()
         dialog.exec()
 
-    def debugger(self):
-        self.debug = BugReport()
-        self.debug.show()
-
 
     def grouping(self):
         self.group.clear()
