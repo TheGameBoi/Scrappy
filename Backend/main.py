@@ -23,7 +23,6 @@ class MainWindow(QMainWindow):
         self.setGeometry(300, 300, 680, 280)
 
         self.items = load_from_json('Backend/items.json')
-        self.style = self.load_stylesheet('Backend/stylesheet.css')
 
         master = QWidget(self)
         self.setCentralWidget(master)
@@ -72,13 +71,6 @@ class MainWindow(QMainWindow):
         layout.addWidget(self.amount, 3, 1)
         layout.addWidget(self.calculate, 4, 0, 1, 2)
 
-
-    def load_stylesheet(self, file_path):
-        if 1 > 0:
-            with open(file_path, 'r') as file:
-                return app.setStyleSheet(file.read())
-        else:
-            pass
 
     def about(self):
         dialog = AboutDialog()
@@ -133,8 +125,7 @@ class AboutDialog(QMessageBox):
         super().__init__()
         self.setWindowTitle("About Us")
         self.setGeometry(300, 300, 400, 300)
-        self.setWindowIcon(QIcon('../imgs/info.ico'))
-        self.setStyleSheet("color: White;")
+        self.setWindowIcon(QIcon('./imgs/info.ico'))
         contents = ("Scrappy v0.1" + "\n"
                    "Made by TheGameBoi")
         self.setText(contents)
@@ -150,7 +141,6 @@ class HelpDialog(QMessageBox):
         super().__init__()
         self.setWindowTitle("Help")
         self.setWindowIcon(QIcon('./imgs/help.ico'))
-        self.setStyleSheet("color: white;")
         contents = ("1.  Use the Drop-down menus, select the resources/location needed." + "\n"
         "2.  Enter the amount of resources you have/want to recycle." + "\n"
         "3.  Click Calculate and view what you got from recycling!")
