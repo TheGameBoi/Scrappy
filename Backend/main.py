@@ -1,12 +1,9 @@
-import sys
 import json
-from PyQt6 import QtGui, QtCore
-from PyQt6.QtCore import Qt, QSettings
-from PyQt6.QtGui import QPixmap, QIcon, QAction
-from PyQt6.QtWidgets import (QComboBox, QMessageBox, QPushButton, QLabel, QLineEdit, QGridLayout, QApplication,
-                             QMainWindow, QGridLayout, QWidget, QTableWidget, QToolBar, QTextEdit, QStatusBar,
-                             QTableWidgetItem, QDialog, QPlainTextEdit, QVBoxLayout, QSizePolicy, QHBoxLayout,
-                             QStyleFactory, QFormLayout, QSpinBox, QListWidget, QMenu, QCheckBox, QRadioButton)
+import sys
+from PyQt6.QtGui import QIcon, QAction
+from PyQt6.QtWidgets import (QComboBox, QMessageBox, QPushButton, QApplication,
+                             QMainWindow, QGridLayout, QWidget, QTextEdit, QStatusBar,
+                             QSpinBox)
 
 
 
