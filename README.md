@@ -4,7 +4,7 @@ My application for the game Rust, which calculates the amount of scrap you get f
 
 
 
-# **---------------- Roadmap ----------------**
+# ** Roadmap **
 
 1. Clean up the current theme and create a dark/light mode.
 2. Finish and host a bug reporting feature in app.

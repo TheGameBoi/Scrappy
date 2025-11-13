@@ -19,7 +19,7 @@ class MainWindow(QMainWindow):
         self.setWindowIcon(QIcon('./imgs/recycler.ico'))
         self.setGeometry(300, 300, 680, 280)
 
-        self.items = load_from_json('json/items.json')
+        self.items = load_from_json('./json/items.json')
 
         master = QWidget(self)
         self.setCentralWidget(master)
