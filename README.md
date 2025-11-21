@@ -6,11 +6,16 @@ notes written down. **It is open-source to ensure transparency with end-users.**
 
 **Not Affiliated with FacePunch or Anyone Else**
 
-# **Roadmap Ideas**
+## Roadmap Ideas
 
 1. Clean up the current theme and create a dark/light mode.
 2. Create an idea suggestion feature.
 3. Create and handle more items and resources in the JSON file.
+
+
+## Download
+
+[Download Scrappy](https://github.com/TheGameBoi/Scrappy/releases)
 
 
 ## **Copyright Information**
