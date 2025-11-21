@@ -22,6 +22,7 @@ class MainWindow(QMainWindow):
         self.setGeometry(300, 300, 680, 280)
 
         main_dir = Path(__file__).parent.resolve()
+        img_dir = main_dir.joinpath('imgs')
         json_path = main_dir / "jsons" / "items.json"
 
         if not json_path.exists():
@@ -94,6 +95,7 @@ class MainWindow(QMainWindow):
 
 
     def listing(self):
+        self.list.clear()
         selected_group = self.group.currentText()
         if selected_group in self.items:
             for resource in self.items['Components']:
