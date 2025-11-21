@@ -8,13 +8,8 @@ from PyQt6.QtWidgets import (QComboBox, QMessageBox, QPushButton, QApplication,
 
 
 
-def load_from_json():
-    main_dir = Path(__file__).parent.resolve()
-    json_path = main_dir / "jsons" / "items.json"
-
-    if not json_path.exists():
-        print("No file found.")
-    with open(json_path, 'r') as my_json:
+def load_from_json(file_path):
+    with open(file_path, 'r') as my_json:
         data = json.load(my_json)
         return data
 
@@ -26,7 +21,14 @@ class MainWindow(QMainWindow):
         self.setWindowIcon(QIcon("./backend/imgs/recycler.ico"))
         self.setGeometry(300, 300, 680, 280)
 
-        self.items = load_from_json()
+        main_dir = Path(__file__).parent.resolve()
+        json_path = main_dir / "jsons" / "items.json"
+
+        if not json_path.exists():
+            print(f"File not found at {json_path}.")
+            return
+
+        self.items = load_from_json(json_path)
 
         master = QWidget(self)
         self.setCentralWidget(master)
