@@ -1,5 +1,6 @@
 import json
 import sys
+from pathlib import Path
 from PyQt6.QtGui import QIcon, QAction
 from PyQt6.QtWidgets import (QComboBox, QMessageBox, QPushButton, QApplication,
                              QMainWindow, QGridLayout, QWidget, QTextEdit, QStatusBar,
@@ -7,19 +8,25 @@ from PyQt6.QtWidgets import (QComboBox, QMessageBox, QPushButton, QApplication,
 
 
 
-def load_from_json(file_path):
-    with open(file_path, 'r') as file:
-        return json.load(file)
+def load_from_json():
+    main_dir = Path(__file__).parent.resolve()
+    json_path = main_dir / "jsons" / "items.json"
+
+    if not json_path.exists():
+        print("No file found.")
+    with open(json_path, 'r') as my_json:
+        data = json.load(my_json)
+        return data
 
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Scrappy")
-        self.setWindowIcon(QIcon('./imgs/recycler.ico'))
+        self.setWindowIcon(QIcon("./backend/imgs/recycler.ico"))
         self.setGeometry(300, 300, 680, 280)
 
-        self.items = load_from_json('./json/items.json')
+        self.items = load_from_json()
 
         master = QWidget(self)
         self.setCentralWidget(master)
@@ -28,13 +35,13 @@ class MainWindow(QMainWindow):
         self.setStatusBar(QStatusBar(master))
         self.menuBar()
 
-        self.file_menu = self.menuBar().addMenu('&File')
+        self.file_menu = self.menuBar().addMenu("&File")
         self.file_help = QAction("&Help", self)
         self.file_menu.addAction(self.file_help)
         self.file_help.triggered.connect(self.help)
 
-        self.about_menu = self.menuBar().addMenu('&About')
-        self.about_action = QAction('Info', self)
+        self.about_menu = self.menuBar().addMenu("&About")
+        self.about_action = QAction("Info", self)
         self.about_menu.addAction(self.about_action)
         self.about_action.triggered.connect(self.about)
 
@@ -122,7 +129,7 @@ class AboutDialog(QMessageBox):
         super().__init__()
         self.setWindowTitle("About Us")
         self.setGeometry(300, 300, 400, 300)
-        self.setWindowIcon(QIcon('./imgs/info.ico'))
+        self.setWindowIcon(QIcon('./backend/imgs/info.ico'))
         contents = ("Scrappy v0.1" + "\n"
                    "Made by TheGameBoi")
         self.setText(contents)
@@ -137,7 +144,7 @@ class HelpDialog(QMessageBox):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Help")
-        self.setWindowIcon(QIcon('./imgs/help.ico'))
+        self.setWindowIcon(QIcon('./backend/imgs/help.ico'))
         contents = ("1.  Use the Drop-down menus, select the resources/location needed." + "\n"
         "2.  Enter the amount of resources you have/want to recycle." + "\n"
         "3.  Click Calculate and view what you got from recycling!")
