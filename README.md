@@ -14,5 +14,6 @@ notes written down. **It is open-source to ensure transparency with end-users.**
 
 
 **Copyright Information**
+
 If I have used any data, images, or text inside my application that is copyrighted, please submit an issue to me and I will
 ensure I remove any content per request by its rightful owner.
