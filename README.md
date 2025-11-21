@@ -6,6 +6,12 @@ notes written down. **It is open-source to ensure transparency with end-users.**
 
 **Not Affiliated with FacePunch or Anyone Else**
 
+
+[Gallery](imgs/scrappy.png)
+
+
+
+
 ## Roadmap Ideas
 
 1. Clean up the current theme and create a dark/light mode.
