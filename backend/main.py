@@ -4,8 +4,24 @@ from pathlib import Path
 from PyQt6.QtGui import QIcon, QAction
 from PyQt6.QtWidgets import (QComboBox, QMessageBox, QPushButton, QApplication,
                              QMainWindow, QGridLayout, QWidget, QTextEdit, QStatusBar,
-                             QSpinBox)
+                             QSpinBox, QCheckBox, QLabel, QVBoxLayout, QHBoxLayout, QDialog)
 
+
+
+
+main_dir = Path(__file__).parent.resolve()
+img_dir = main_dir / "imgs"
+json_path = main_dir / "jsons" / "items.json"
+css_path = main_dir / "themes" / "mode.css"
+icon_file = ["recycler.ico", "help.ico", "info.ico"]
+icon_path = {name: img_dir / name for name in icon_file}
+
+try:
+    with open(css_path, "r") as style:
+                dark_style = style.read()
+except FileNotFoundError:
+    print("File not found.")
+    dark_style = ""
 
 
 def load_from_json(file_path):
@@ -14,16 +30,15 @@ def load_from_json(file_path):
         return data
 
 
+
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Scrappy")
-        self.setWindowIcon(QIcon("./backend/imgs/recycler.ico"))
+        self.setWindowIcon(QIcon(str(icon_path["recycler.ico"])))
         self.setGeometry(300, 300, 680, 280)
 
-        main_dir = Path(__file__).parent.resolve()
-        img_dir = main_dir.joinpath('imgs')
-        json_path = main_dir / "jsons" / "items.json"
+        self.theme = 0
 
         if not json_path.exists():
             print(f"File not found at {json_path}.")
@@ -39,13 +54,23 @@ class MainWindow(QMainWindow):
         self.menuBar()
 
         self.file_menu = self.menuBar().addMenu("&File")
+
         self.file_help = QAction("&Help", self)
         self.file_menu.addAction(self.file_help)
         self.file_help.triggered.connect(self.help)
 
-        self.about_menu = self.menuBar().addMenu("&About")
-        self.about_action = QAction("Info", self)
-        self.about_menu.addAction(self.about_action)
+        self.file_setting = QAction("&Settings", self)
+        self.file_menu.addAction(self.file_setting)
+        self.file_setting.triggered.connect(self.setting)
+
+        self.file_about = QAction("&About", self)
+        self.file_menu.addAction(self.file_about)
+        self.file_about.triggered.connect(self.about)
+
+
+        self.about_action = QAction("About", self)
+        self.setting_action = QAction("&Settings", self)
+        self.file_menu.addAction(self.file_about)
         self.about_action.triggered.connect(self.about)
 
         self.amount = QSpinBox(self)
@@ -70,7 +95,13 @@ class MainWindow(QMainWindow):
         self.result.setReadOnly(True)
         self.result.setFixedHeight(70)
 
+        self.check = QCheckBox(self)
+        self.check.setText("Dark Theme")
+        self.check.clicked.connect(self.toggle_themes)
+
+
         # Add widgets to the layout
+        layout.addWidget(self.check, 4, 0, 2, 2)
         layout.addWidget(self.result, 0, 0, 1, 2)
         layout.addWidget(self.group, 2, 0)
         layout.addWidget(self.list, 2, 1)
@@ -79,13 +110,28 @@ class MainWindow(QMainWindow):
         layout.addWidget(self.calculate, 4, 0, 1, 2)
 
 
+    def toggle_themes(self):
+        self.theme = 0 if self.theme == 1 else 1
+        if self.theme == 1:
+            if dark_style:
+                self.setStyleSheet(dark_style)
+        else:
+            self.setStyleSheet("")
+
+
     def about(self):
-        dialog = AboutDialog()
-        dialog.exec()
+        self.about_dialog = AboutDialog(self)
+        self.about_dialog.show()
+
 
     def help(self):
-        dialog = HelpDialog()
-        dialog.exec()
+        self.help_dialog = HelpDialog(self)
+        self.help_dialog.show()
+
+
+    def setting(self):
+        self.setting_dialog = SettingDialog(self)
+        self.setting_dialog.show()
 
 
     def grouping(self):
@@ -128,31 +174,59 @@ class MainWindow(QMainWindow):
 
 
 
-class AboutDialog(QMessageBox):
-    def __init__(self):
-        super().__init__()
+class AboutDialog(QDialog):
+    def __init__(self, parent=None):
+        super().__init__(parent)
         self.setWindowTitle("About Us")
-        self.setGeometry(300, 300, 400, 300)
-        self.setWindowIcon(QIcon('./backend/imgs/info.ico'))
-        contents = ("Scrappy v0.1" + "\n"
-                   "Made by TheGameBoi")
-        self.setText(contents)
+        self.setGeometry(300, 300, 300, 100)
+        self.setWindowIcon(QIcon(str(icon_path["info.ico"])))
 
-        def load_stylesheet(file_path):
-            with open(file_path, 'r') as file:
-                return app.setStyleSheet(file.read())
-        self.style()
+        layout = QGridLayout(self)
+        self.setLayout(layout)
+
+        self.about = QLabel(self)
+        self.about.setText(
+        "        Scrappy Version 0.1" + "\n"
+        "        Made by TheGameBoi" + "\n"
+        "        All rights and copyrights reserved"
+        )
+
+        layout.addWidget(self.about, 0, 0)
 
 
-class HelpDialog(QMessageBox):
-    def __init__(self):
-        super().__init__()
+class HelpDialog(QDialog):
+    def __init__(self, parent=None):
+        super().__init__(parent)
         self.setWindowTitle("Help")
-        self.setWindowIcon(QIcon('./backend/imgs/help.ico'))
-        contents = ("1.  Use the Drop-down menus, select the resources/location needed." + "\n"
-        "2.  Enter the amount of resources you have/want to recycle." + "\n"
-        "3.  Click Calculate and view what you got from recycling!")
-        self.setText(contents)
+        self.setGeometry(300, 300, 400, 100)
+        self.setWindowIcon(QIcon(str(icon_path["help.ico"])))
+
+        layout = QGridLayout(self)
+        self.setLayout(layout)
+
+        self.guides = QLabel(self)
+        self.guides.setText(
+        "How to use Scrappy:" + "\n" + "\n"
+        "       1. Select a type of resource from the dropdown box. (Components, etc)" + "\n"
+        "       2. Choose the item you are going to recycle. (Tech Trash, Electric Fuse, etc)" + "\n"
+        "       3. Select a location to recycle from. (Safe-Zone/Monument)" + "\n"
+        "       4. Enter the number of your resources into the number box. (0-500)" + "\n"
+        "       5. Click the Calculate button and see what you got from recycling!"
+        )
+
+        layout.addWidget(self.guides, 0, 0)
+
+
+class SettingDialog(QDialog):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.setWindowTitle("Settings")
+        self.setGeometry(300, 300, 300, 100)
+        self.setWindowIcon(QIcon(str(icon_path["info.ico"])))
+
+        layout = QGridLayout(self)
+        self.setLayout(layout)
+
 
 
 
