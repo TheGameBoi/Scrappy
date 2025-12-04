@@ -7,7 +7,7 @@ notes written down. **It is open-source to ensure transparency with end-users.**
 **Not Affiliated with FacePunch or Anyone Else**
 
 
-![Image 1](https://github.com/TheGameBoi/Scrappy/blob/master/backend/imgs/scrappy.png)
+![Image 1](https://github.com/TheGameBoi/Scrappy/blob/master/backend/imgs/darkmode.png)
 ![Image 2](https://github.com/TheGameBoi/Scrappy/blob/master/backend/imgs/scrappy2.png)
 ![Image 3](https://github.com/TheGameBoi/Scrappy/blob/master/backend/imgs/scrappy3.png)
 
