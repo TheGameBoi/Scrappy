@@ -16,9 +16,9 @@ notes written down. **It is open-source to ensure transparency with end-users.**
 
 ## Roadmap Ideas
 
-1. Clean up the current theme and create a dark/light mode.
-2. Create an idea suggestion feature.
-3. Create and handle more items and resources in the JSON file.
+1. Create and handle more items and resources in the JSON file.
+2. Clean up and create a more clean, scalable UI.
+3. Implement social media and other links inside the app.
 
 
 ## Download

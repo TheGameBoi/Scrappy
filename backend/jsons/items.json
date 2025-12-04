@@ -1,73 +1,294 @@
 {
-    "Components" : {
+  "Items" : {
+      "Components" : {
         "Tech Trash": {
-            "Scrap": 20,
-            "HQM":  1
-        },
+          "Scrap": 20,
+          "HQM":  1
+      },
         "Electric Fuse": {
-            "Scrap":  20,
-            "HQM": 0
-        },
+          "Scrap":  20,
+          "HQM": 0
+      },
         "Targeting Computer": {
           "Tech Trash": 2,
           "Metal Fragments": 60,
           "HQM": 2
-        },
+      },
         "CCTV Camera": {
           "Tech Trash": 2,
           "HQM": 2
-        },
+      },
         "Sheet Metal": {
           "Scrap": 8,
           "Metal Fragments": 100,
           "HQM": 1
-        },
+      },
         "Road Sign": {
           "Scrap": 5,
           "HQM": 1
-        },
+      },
         "Metal Pipe": {
           "Scrap": 5,
           "HQM": 1
-        },
+      },
         "Metal Blade": {
           "Scrap": 2,
           "Metal Fragments": 15
-        },
+      },
         "Metal Spring": {
           "Scrap": 10,
           "HQM": 1
-        },
+      },
         "Gears": {
           "Scrap": 10,
           "Metal Fragments": 13
-        },
+      },
         "Propane Tank": {
           "Scrap": 1,
           "Metal Fragments": 50
-        },
+      },
         "Tarp": {
           "Cloth": 50
-        },
+      },
         "Sewing Kit": {
           "Cloth": 10,
           "Rope": 2
-        },
+      },
         "Rope": {
           "Cloth": 15
-        },
+      },
         "Rifle Body": {
           "Scrap": 25,
           "HQM": 2
-        },
+      },
         "SMG Body": {
           "Scrap": 15,
           "HQM": 2
-        },
+      },
         "Semi Body": {
           "Scrap": 15,
           "HQM": 2,
           "Metal Fragments": 75
+      }
+    },
+        "Tools" : {
+          "Flashlight": {
+            "Metal Fragments": 15
+          },
+          "Binoculars" : {
+            "Metal Fragments": 20,
+            "Gears": 0.5
+          },
+          "Pickaxe" : {
+            "Wood": 50,
+            "Metal Fragments": 63
+          },
+          "Hatchet" : {
+            "Wood": 50,
+            "Metal Fragments": 38
+          },
+          "Salvaged Icepick" : {
+            "Metal Pipe": 0.5,
+            "Metal Blade": 3
+          },
+          "Salvaged Axe" : {
+            "Metal Pipe": 0.5,
+            "Metal Blade": 3
+          },
+          "Salvaged Hammer" : {
+            "Metal Pipe": 0.5,
+            "Metal Fragments": 25
+          },
+          "Jackhammer" : {
+            "Scrap": 30,
+            "Metal Blade": 3,
+            "Metal Pipe": 0.5
+          },
+          "Chainsaw" : {
+            "High Quality Metal": 3,
+            "Gears": 1,
+            "Metal Blade": 3
+          },
+          "Stone Pickaxe" : {
+            "Wood": 100,
+            "Stone": 50
+          },
+          "Stone Hatchet" : {
+            "Wood": 100,
+            "Stone": 50
+          },
+          "Flare" : {
+            "Gunpowder": 5,
+            "Metal Fragments": 5
+          },
+          "Water Bucket" : {
+            "Metal Fragments": 10
+          },
+          "Satchel Charge" : {
+            "Beancan Grenade": 2,
+            "Small Stash": 0.5,
+            "Rope": 0.5
+          },
+          "C4" : {
+            "Explosives": 10,
+            "Cloth": 3,
+            "Tech Trash": 1
+          }
+        },
+        "Weapons" : {
+          "Hunting Bow": {
+            "Wood": 100,
+            "Cloth": 25
+          },
+          "Compound Bow" : {
+            "Wood": 50,
+            "Metal Fragments": 13,
+            "Rope": 1
+          },
+          "Crossbow" : {
+            "Wood": 100,
+            "Metal Fragments": 38,
+            "Rope": 1
+          },
+          "Nailgun" :{
+            "Scrap": 10,
+            "Metal Fragments": 38
+          },
+          "Eoka" : {
+            "Wood": 38,
+            "metal Fragments": 15
+          },
+          "Machete" : {
+            "Wood": 50,
+            "Metal Fragments": 20
+          },
+          "Salvaged Sword" : {
+            "Metal Fragments": 8,
+            "Metal Blade": 0.5
+          },
+          "Combat Knife" : {
+            "Metal Fragments": 13,
+            "High Quality Metal": 0.5
+          },
+          "Salvaged Cleaver" : {
+            "Metal Fragments": 25,
+            "Road Signs": 0.5
+          },
+          "Mace" : {
+            "Wood": 50,
+            "Metal Fragments": 50
+          },
+          "Paddle" : {
+            "Wood": 100,
+            "Metal Blade": 0.5,
+            "Metal Fragments": 8
+          },
+          "Longsword" : {
+            "Metal Fragments": 50,
+            "Metal Blade": 1
+          },
+          "Waterpipe": {
+            "Wood": 50,
+            "Metal Fragments": 38
+          },
+          "Double Barrel" : {
+            "Metal Fragments": 88,
+            "Metal Pipe": 1
+          },
+          "Revolver": {
+            "Metal Fragments": 63,
+            "Metal Pipe":0.5,
+            "Cloth": 13
+          },
+          "P250" : {
+            "Semi-Auto Body": 0.5,
+            "High Quality Metal": 2,
+            "Metal Pipe": 0.5
+          },
+          "Pump Shotgun" : {
+            "High Quality Metal": 8,
+            "Metal Pipe": 1,
+            "Metal Spring": 0.5
+          },
+          "Custom SMG" : {
+            "High Quality Metal": 4,
+            "Metal Spring": 0.5,
+            "SMG Body": 0.5
+          },
+          "Thompson" : {
+            "Wood": 50,
+            "High Quality Metal": 5,
+            "SMG Body": 0.5,
+            "Metal Spring": 0.5
+          },
+          "Semi-Auto Rifle" : {
+            "Metal Fragments": 225,
+            "High Quality Metal": 2,
+            "Semi-Auto Body": 0.5,
+            "Metal Spring": 0.5
+          },
+          "M92 Pistol" : {
+            "High Quality Metal": 13,
+            "Semi-Auto Body": 0.5,
+            "Metal Pipe": 0.5,
+            "Metal Spring": 0.5
+          },
+          "Assault Rifle (AK)" : {
+            "High Quality Metal": 25,
+            "Wood": 100,
+            "Rile Body": 0.5,
+            "Metal Spring": 2
+          },
+          "Bolt Action Rifle" : {
+            "High Quality Metal": 10,
+            "Metal Pipe": 2,
+            "Rifle Body": 0.5
+          },
+          "LR-300" : {
+            "High Quality Metal": 20,
+            "Metal Spring": 1,
+            "Rifle Body": 0.5
+          },
+          "M39 Rifle" : {
+            "High Quality Metal": 25,
+            "Metal Spring": 2,
+            "Rifle Body": 0.5
+          },
+          "L96 Rifle" : {
+            "High Quality Metal": 20,
+            "Metal Pipe": 3,
+            "Metal Sping": 3,
+            "Tech Trash": 0.5
+          },
+          "M249" : {
+            "High Quality Metal": 20,
+            "Metal Spring": 3,
+            "Gears": 3,
+            "Rifle Body": 0.5
+          },
+          "SPAS-12" : {
+            "High Quality Metal": 10,
+            "Metal Pipe": 2,
+            "Metal Spring": 2
+          },
+          "Grenade Launcher" : {
+            "High Quality Metal": 13,
+            "Metal Pipe": 2
+          },
+          "MP4A4" : {
+            "High Quality Metal": 8,
+            "Metal Spring": 1,
+            "SMG Body": 0.5
+          },
+          "Python Revolver" : {
+            "High Quality Metal": 5,
+            "Metal Pipe": 2,
+            "Metal Spring": 0.5
+          },
+          "Rocket Launcher" : {
+            "High Quality Metal": 20,
+            "Metal Pipe": 2
+          }
         }
-    }
+  }
 }

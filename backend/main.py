@@ -136,15 +136,16 @@ class MainWindow(QMainWindow):
 
     def grouping(self):
         self.group.clear()
-        for group in self.items:
+        for group in self.items['Items']:
             self.group.addItem(group)
 
 
     def listing(self):
         self.list.clear()
         selected_group = self.group.currentText()
-        if selected_group in self.items:
-            for resource in self.items['Components']:
+        if selected_group in self.items['Items']:
+            group_items = self.items['Items'][selected_group]
+            for resource in group_items:
                 self.list.addItem(resource)
 
 
@@ -152,8 +153,10 @@ class MainWindow(QMainWindow):
         resource = self.list.currentText()
         amount = self.amount.value()
         location = self.choice.currentText()
-        comps = self.items.get('Components')
-        res = comps.get(resource)
+
+        selected_group = self.group.currentText()
+        group_data = self.items['Items'].get(selected_group, {})
+        res = group_data.get(resource)
 
         my_dict = {}
 
