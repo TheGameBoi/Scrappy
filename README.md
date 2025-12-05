@@ -7,8 +7,10 @@ guess or keep notes written down.
 # Overview
 
 Ever since the May 2025 update for Rust by FacePunch, the recyclers in game have been changed on how they work:
-Safe-Zones now only give 80% of the resources from every item.
-Monuments will now give 120% of the resources from every item.
+
+* Safe-Zones now only give 80% of the resources from every item.
+* Monuments will now give 120% of the resources from every item.
+
 Instead of having to do math on paper, in your head, or even make guesses on what you'll get from recycling at different
 locations, Scrappy automatically calculates the recycled item's resources by the appropriate number based on the location 
 and item you select, giving you an edge when it comes to grinding and gathering resources.
