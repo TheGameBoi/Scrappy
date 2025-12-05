@@ -16,6 +16,7 @@ locations, Scrappy automatically calculates the recycled item's resources by the
 and item you select, giving you an edge when it comes to grinding and gathering resources.
 
 **Not Affiliated with FacePunch or Anyone Else**
+
 **It is open-source to ensure transparency with end-users.**
 
 
