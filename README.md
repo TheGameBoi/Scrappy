@@ -15,15 +15,15 @@ Instead of having to do math on paper, in your head, or even make guesses on wha
 locations, Scrappy automatically calculates the recycled item's resources by the appropriate number based on the location 
 and item you select, giving you an edge when it comes to grinding and gathering resources.
 
-
 **Not Affiliated with FacePunch or Anyone Else**
 **It is open-source to ensure transparency with end-users.**
 
 
+# Gallery
+
 ![Image 1](https://github.com/TheGameBoi/Scrappy/blob/master/backend/imgs/darktheme.png)
 ![Image 2](https://github.com/TheGameBoi/Scrappy/blob/master/backend/imgs/scrappy2.png)
 ![Image 3](https://github.com/TheGameBoi/Scrappy/blob/master/backend/imgs/scrappy3.png)
-
 
 
 ## Roadmap Ideas
