@@ -4,7 +4,11 @@ Scrappy is a simple, yet handy, application for the game Rust and allows players
 items will give from recycling at different locations on the map, such as Safe-Zones and Monuments, without the need to 
 guess or keep notes written down.
 
+
 # Overview
+
+![Video](https://www.youtube.com/watch?v=o-tSs5bSR3A)
+
 
 Ever since the May 2025 update for Rust by FacePunch, the recyclers in game have been changed on how they work:
 
