@@ -12,6 +12,8 @@ frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media
 referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 
+
+
 Ever since the May 2025 update for Rust by FacePunch, the recyclers in game have been changed on how they work:
 
 * Safe-Zones now only give 80% of the resources from every item.
