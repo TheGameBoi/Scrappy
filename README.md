@@ -7,7 +7,7 @@ guess or keep notes written down.
 
 # Overview
 
-![Video](https://www.youtube.com/watch?v=o-tSs5bSR3A)
+<iframe width="516" height="315" src="https://www.youtube.com/watch?v=o-tSs5bSR3A" title="Scrappy V0.2 App" frameborder="0" allowfullscreen></iframe>
 
 
 Ever since the May 2025 update for Rust by FacePunch, the recyclers in game have been changed on how they work:
