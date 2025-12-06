@@ -12,7 +12,7 @@ guess or keep notes written down.
         width="560" 
         height="315" 
         src="https://www.youtube.com/embed/o-tSs5bSR3A?si=XG1-MaDxmFAtn9qD" 
-        title="YouTube video player" 
+        title="Scrappy" 
         frameborder="0" 
         allow="accelerometer; 
         autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
