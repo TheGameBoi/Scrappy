@@ -7,30 +7,6 @@ guess or keep notes written down.
 
 # Overview
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/o-tSs5bSR3A?si=6Rg983ywYpqoRjkY" title="YouTube video player" 
-frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Ever since the May 2025 update for Rust by FacePunch, the recyclers in game have been changed on how they work:
 
 * Safe-Zones now only give 80% of the resources from every item.
@@ -70,3 +46,18 @@ and item you select, giving you an edge when it comes to grinding and gathering 
 
 If I have used any data, images, or text inside my application that is copyrighted, please submit an issue to me and I will
 ensure I remove any content per request by its rightful owner.
+
+
+
+
+
+
+
+
+
+
+
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/o-tSs5bSR3A?si=6Rg983ywYpqoRjkY" title="YouTube video player" 
+frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
