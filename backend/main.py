@@ -1,11 +1,10 @@
 import sys
-import json
 from PyQt6.QtGui import QIcon, QAction
 from menu_dialogs import AboutDialog, HelpDialog, SettingDialog
 from directories import icon_path, json_path, load_from_json, css_path
 from PyQt6.QtWidgets import (QComboBox, QPushButton, QApplication,
                              QMainWindow, QGridLayout, QWidget, QTextEdit, QStatusBar,
-                             QSpinBox)
+                             QSpinBox, QLabel)
 
 
 
@@ -54,12 +53,29 @@ class MainWindow(QMainWindow):
         self.file_menu.addAction(self.file_about)
         self.about_action.triggered.connect(self.about)
 
+
+        self.twitter = QLabel(
+            f'<a href="https://x.com/ImGameBoi"><img src="{str(icon_path["x.png"])}" width="16" height="16"></a>', self)
+        self.twitter.setOpenExternalLinks(True)
+        self.statusBar().addPermanentWidget(self.twitter)
+
+        self.github = QLabel(
+            f'<a href="https://github.com/TheGameBoi/Scrappy"><img src="{str(icon_path["github.png"])}" width="16" height="16"></a>', self)
+        self.github.setOpenExternalLinks(True)
+        self.statusBar().addPermanentWidget(self.github)
+
+        # QComboBoxes
         self.amount = QSpinBox(self)
         self.amount.setRange(0, 500)
+
+        self.choice = QComboBox(self)
+        self.choice.addItem("Safe-Zone")
+        self.choice.addItem("Monument")
 
         self.group = QComboBox(self)
         self.group.setFixedWidth(200)
         self.group.currentIndexChanged.connect(self.listing)
+
         self.list = QComboBox(self)
         self.list.setFixedWidth(200)
 
@@ -67,10 +83,7 @@ class MainWindow(QMainWindow):
         self.grouping()
         self.listing()
 
-        self.choice = QComboBox(self)
-        self.choice.addItem("Safe-Zone")
-        self.choice.addItem("Monument")
-
+        # Buttons and Labels
         self.calculate = QPushButton("Calculate", self)
         self.calculate.clicked.connect(self.calculator)
 

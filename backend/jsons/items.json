@@ -236,7 +236,7 @@
           "Assault Rifle (AK)" : {
             "High Quality Metal": 25,
             "Wood": 100,
-            "Rile Body": 0.5,
+            "Rifle Body": 0.5,
             "Metal Spring": 2
           },
           "Bolt Action Rifle" : {

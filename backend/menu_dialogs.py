@@ -1,7 +1,7 @@
 from PyQt6.QtCore import Qt, pyqtSignal
 from PyQt6.QtGui import QIcon
 from directories import icon_path
-from PyQt6.QtWidgets import QGridLayout, QLabel, QDialog, QCheckBox, QWidget, QVBoxLayout
+from PyQt6.QtWidgets import QGridLayout, QLabel, QDialog, QCheckBox, QWidget, QVBoxLayout, QDialogButtonBox
 
 
 class HelpDialog(QDialog):
@@ -11,7 +11,8 @@ class HelpDialog(QDialog):
         self.setGeometry(300, 300, 400, 100)
         self.setWindowIcon(QIcon(str(icon_path["help.ico"])))
 
-        layout = QGridLayout(self)
+        master = QWidget(self)
+        layout = QGridLayout(master)
         self.setLayout(layout)
 
         # QLabel widget that displays help info.
@@ -25,7 +26,12 @@ class HelpDialog(QDialog):
         "       5. Click the Calculate button and see what you got from recycling!"
         )
 
-        layout.addWidget(self.guides, 0, 0)
+        self.button_box = QDialogButtonBox(QDialogButtonBox.StandardButton.Ok)
+        self.button_box.accepted.connect(self.accept)
+        self.button_box.rejected.connect(self.reject)
+
+        layout.addWidget(self.guides)
+        layout.addWidget(self.button_box)
 
 
 class SettingDialog(QDialog):
@@ -44,6 +50,7 @@ class SettingDialog(QDialog):
         layout = QVBoxLayout(master)
         self.setLayout(layout)
 
+
         self.dark_box = QCheckBox(self)
         self.dark_box.setText("Enable Dark Theme")
         # Initial state, which is false, won't fire automatically
@@ -51,7 +58,14 @@ class SettingDialog(QDialog):
         # Connect the Checkbox to emit a signal
         self.dark_box.stateChanged.connect(self.toggle_themes)
 
+        self.button_box = QDialogButtonBox(
+            QDialogButtonBox.StandardButton.Ok | QDialogButtonBox.StandardButton.Cancel
+                                           )
+        self.button_box.accepted.connect(self.accept)
+        self.button_box.rejected.connect(self.reject)
+
         layout.addWidget(self.dark_box)
+        layout.addWidget(self.button_box)
 
     def toggle_themes(self, state):
         """
@@ -72,15 +86,21 @@ class AboutDialog(QDialog):
         self.setGeometry(300, 300, 300, 100)
         self.setWindowIcon(QIcon(str(icon_path["info.ico"])))
 
-        layout = QGridLayout(self)
+        master = QWidget(self)
+        layout = QGridLayout(master)
         self.setLayout(layout)
 
         # QLabel widget that displays about info.
         self.about = QLabel(self)
         self.about.setText(
-        "        Scrappy Version 0.1" + "\n"
+        "        Scrappy Version 0.1.2" + "\n"
         "        Made by TheGameBoi" + "\n"
-        "        All rights and copyrights reserved"
+        "        All rights and copyrights reserved 2025-2025"
         )
 
-        layout.addWidget(self.about, 0, 0)
+        self.button_box = QDialogButtonBox(QDialogButtonBox.StandardButton.Ok)
+        self.button_box.accepted.connect(self.accept)
+        self.button_box.rejected.connect(self.reject)
+
+        layout.addWidget(self.about)
+        layout.addWidget(self.button_box)
