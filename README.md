@@ -36,9 +36,9 @@ and item you select, giving you an edge when it comes to grinding and gathering 
 
 ## Roadmap Ideas
 
-1. Create and handle more items and resources in the JSON file.
-2. Clean up and create a more clean, scalable UI.
-3. Implement social media and other links inside the app.
+1. Make the UI cleaner and more scalable (Possibly overhaul Scrappy entirely).
+2. Create and implement a rate increaser.
+3. Add a resource amount group ability.
 
 
 ## Download
