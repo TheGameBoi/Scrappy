@@ -93,7 +93,7 @@ class AboutDialog(QDialog):
         # QLabel widget that displays about info.
         self.about = QLabel(self)
         self.about.setText(
-        "        Scrappy Version 0.1.2" + "\n"
+        "        Scrappy Version 0.2" + "\n"
         "        Made by TheGameBoi" + "\n"
         "        All rights and copyrights reserved 2025-2025"
         )
