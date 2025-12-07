@@ -37,8 +37,8 @@ and item you select, giving you an edge when it comes to grinding and gathering 
 ## Roadmap Ideas
 
 1. Make the UI cleaner and more scalable (Possibly overhaul Scrappy entirely).
-2. Create and implement a rate increaser.
-3. Add a resource amount group ability.
+2. Implement a permanent theme setting.
+3. Create and implement a rate selector.
 
 
 ## Download
