@@ -3,11 +3,11 @@
       "Components" : {
         "Tech Trash": {
           "Scrap": 20,
-          "HQM":  1
+          "High Quality Metal":  1
       },
         "Electric Fuse": {
           "Scrap":  20,
-          "HQM": 0
+          "High Quality Metal": 0
       },
         "Targeting Computer": {
           "Tech Trash": 2,
@@ -16,20 +16,20 @@
       },
         "CCTV Camera": {
           "Tech Trash": 2,
-          "HQM": 2
+          "High Quality Metal": 2
       },
         "Sheet Metal": {
           "Scrap": 8,
           "Metal Fragments": 100,
-          "HQM": 1
+          "High Quality Metal": 1
       },
         "Road Sign": {
           "Scrap": 5,
-          "HQM": 1
+          "High Quality Metal": 1
       },
         "Metal Pipe": {
           "Scrap": 5,
-          "HQM": 1
+          "High Quality Metal": 1
       },
         "Metal Blade": {
           "Scrap": 2,
@@ -37,7 +37,7 @@
       },
         "Metal Spring": {
           "Scrap": 10,
-          "HQM": 1
+          "High Quality Metal": 1
       },
         "Gears": {
           "Scrap": 10,
@@ -59,15 +59,15 @@
       },
         "Rifle Body": {
           "Scrap": 25,
-          "HQM": 2
+          "High Quality Metal": 2
       },
         "SMG Body": {
           "Scrap": 15,
-          "HQM": 2
+          "High Quality Metal": 2
       },
         "Semi Body": {
           "Scrap": 15,
-          "HQM": 2,
+          "High Quality Metal": 2,
           "Metal Fragments": 75
       }
     },
@@ -125,7 +125,7 @@
             "Metal Fragments": 10
           },
           "Satchel Charge" : {
-            "Beancan Grenade": 2,
+            "Bean-can Grenade": 2,
             "Small Stash": 0.5,
             "Rope": 0.5
           },
@@ -187,7 +187,7 @@
             "Metal Fragments": 50,
             "Metal Blade": 1
           },
-          "Waterpipe": {
+          "Water-pipe": {
             "Wood": 50,
             "Metal Fragments": 38
           },
@@ -288,6 +288,230 @@
           "Rocket Launcher" : {
             "High Quality Metal": 20,
             "Metal Pipe": 2
+          }
+        },
+        "Clothes" : {
+          "Hazmat Suit": {
+            "Tarp": 3,
+            "Sewing Kit": 1,
+            "High Quality Metal": 4
+          },
+          "Bone Helmet" : {
+            "Cloth": 8,
+            "Bone Fragments": 15
+          },
+          "Bone Armor" : {
+            "Cloth": 8,
+            "Bone Fragments": 35
+          },
+          "Burlap Headwrap" : {
+            "Cloth": 5
+          },
+          "Burlap Shirt" : {
+            "Cloth": 10
+          },
+          "Burlap Pants": {
+            "Cloth": 10
+          },
+          "Burlap Gloves" : {
+            "Cloth": 3
+          },
+          "Burlap Shoes" : {
+            "Cloth": 5
+          },
+          "Wood Helmet" : {
+            "Cloth": 8,
+            "Wood": 100
+          },
+          "Wood Chestplate" : {
+            "Rope": 0.5,
+            "Wood": 150
+          },
+          "Wood Pants" : {
+            "Rope": 0.5,
+            "Wood": 100
+          },
+          "Candle Hat" : {
+            "Cloth": 8,
+            "Low Grade": 3
+          },
+          "Beanie" : {
+            "Cloth": 8
+          },
+          "Balaclava" : {
+            "Cloth": 8
+          },
+          "Boonie Hat" : {
+            "Cloth": 5
+          },
+          "Baseball Cap" : {
+            "Cloth": 3
+          },
+          "Bandana Mask" : {
+            "Cloth": 3
+          },
+          "Wolf Headdress" : {
+            "Cloth": 5,
+            "Wolf Skull": 0.5
+          },
+          "Riot Helmet" : {
+            "Cloth": 5,
+            "Metal Fragments": 25
+          },
+          "Bucket Helmet" : {
+            "Metal Fragments": 18
+          },
+          "Tank-top": {
+            "Cloth": 10
+          },
+          "T-Shirt" : {
+            "Cloth": 13
+          },
+          "Shirt" : {
+            "Cloth": 13
+          },
+          "Long-sleeve T-Shirt": {
+            "Cloth": 15
+          },
+          "Jacket" : {
+            "Cloth": 25,
+            "Sewing Kit": 1
+          },
+          "Hoodie" : {
+            "Cloth": 20,
+            "Sewing Kit": 0.5
+          },
+          "Snow Jacket" : {
+            "Cloth": 30,
+            "Sewing Kit": 0.5
+          },
+          "Hide Vest" : {
+            "Leather": 5
+          },
+          "Hide Poncho" : {
+            "Leather": 8
+          },
+          "Leather Gloves" : {
+            "Leather": 10,
+            "Sewing Kit": 0.5
+          },
+          "Hide Pants" : {
+            "Leather": 5
+          },
+          "Hide Boots" : {
+            "Leather": 5
+          },
+          "Coffee Helmet" : {
+            "Cloth": 8,
+            "Metal Fragments": 30,
+            "Sewing Kit": 0.5
+          },
+          "Road-Sign Jacket" : {
+            "Road-Signs": 2,
+            "Sewing Kit": 1
+          },
+          "Road-Sign Kilt" : {
+            "Leather": 5,
+            "Road-Signs": 0.5,
+            "Sewing Kit": 1
+          },
+          "Boots" : {
+            "Leather": 10,
+            "Metal Fragments": 8,
+            "Sewing Kit": 0.5
+          },
+          "Metal Face-Mask" : {
+            "Leather": 25,
+            "High Quality Metal": 8,
+            "Sewing Kit": 3
+          },
+          "Metal Chestplate" : {
+            "Leather": 25,
+            "High Quality Metal": 13,
+            "Sewing Kit": 4
+          },
+          "Heavy Plate Helmet" : {
+            "High Quality Metal": 2,
+            "Sheet Metal": 0.5
+          },
+          "Heavy Plate Jacket" : {
+            "High Quality Metal": 2,
+            "Sheet Metal": 1
+          },
+          "Heavy Plate Pants" : {
+            "High Quality Metal": 2,
+            "Sheet Metal": 0.5
+          }
+        },
+        "Ammo" : {
+          "Handmade Shell" : {
+            "Stones": 2,
+            "Gunpowder": 2
+          },
+          "Pistol Bullet" : {
+            "Metal Fragments": 2,
+            "Gunpowder": 1
+          },
+          "Incendiary Pistol Bullet" : {
+            "Metal Fragments": 2,
+            "Gunpowder": 1,
+            "Sulfur": 1
+          },
+          "HV Pistol Bullet" : {
+            "Metal Fragments": 2,
+            "Gunpowder": 4
+          },
+          "5.56 Rifle Ammo" : {
+            "Metal Fragments": 2,
+            "Gunpowder": 1
+          },
+          "Explosive 5.56 Ammo" : {
+            "Metal Fragments": 3,
+            "Gunpowder": 5,
+            "Sulfur": 3
+          },
+          "Incendiary 5.56 Ammo" : {
+            "Metal Fragments": 3,
+            "Gunpowder": 3,
+            "Sulfur": 2
+          },
+          "HV 5.56 Ammo" : {
+            "Metal Fragments": 3,
+            "Gunpowder": 5
+          },
+          "12 Gauge Buckshot" : {
+            "Metal Fragments": 2,
+            "Gunpowder": 3
+          },
+          "12 Gauge Incendiary" : {
+            "Metal Fragments": 2,
+            "Gunpowder": 3,
+            "Sulfur": 5
+          },
+          "12 Gauge Slug" : {
+            "Metal Fragments": 2,
+            "Gunpowder": 3
+          },
+          "HV Rocket" : {
+            "Gunpowder": 50,
+            "Metal Pipe": 0.5
+          },
+          "Rocket" : {
+            "Gunpowder": 75,
+            "Metal Pipe": 1,
+            "Explosives": 5
+          },
+          "Incendiary Rocket" : {
+            "Gunpowder": 1,
+            "Low Grade": 125,
+            "Metal Pipe": 1,
+            "Explosives": 0.5
+          },
+          "Explosives" : {
+            "Gunpowder": 25,
+            "Low Grade": 2,
+            "Sulfur": 5,
+            "Metal Fragments": 5
           }
         }
   }
