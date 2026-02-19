@@ -1,7 +1,8 @@
 import sys
+from PyQt6.QtCore import QEvent
 from PyQt6.QtGui import QIcon, QAction
-from menu_dialogs import AboutDialog, HelpDialog, SettingDialog
-from directories import icon_path, json_path, load_from_json, css_path
+from menu_dialogs import AboutDialog, HelpDialog
+from directories import icon_path, load_from_json, items
 from PyQt6.QtWidgets import (QComboBox, QPushButton, QApplication,
                              QMainWindow, QGridLayout, QWidget, QTextEdit, QStatusBar,
                              QSpinBox, QLabel)
@@ -18,12 +19,12 @@ class MainWindow(QMainWindow):
         self.is_dark_mode = False # Keeps track of the current theme.
 
         # Error handling for JSON data.
-        if not json_path.exists():
-            print(f"File not found at {json_path}.")
+        if not items.exists():
+            print(f"File not found at {items}.")
             return
 
         # Items list for JSON.
-        self.items = load_from_json(json_path)
+        self.items = load_from_json(items)
 
         # MainWindow widgets and File Menu actions.
         master = QWidget(self)
@@ -39,9 +40,6 @@ class MainWindow(QMainWindow):
         self.file_menu.addAction(self.file_help)
         self.file_help.triggered.connect(self.help)
 
-        self.file_setting = QAction("&Settings", self)
-        self.file_menu.addAction(self.file_setting)
-        self.file_setting.triggered.connect(self.setting)
 
         self.file_about = QAction("&About", self)
         self.file_menu.addAction(self.file_about)
@@ -110,33 +108,6 @@ class MainWindow(QMainWindow):
         self.help_dialog.show()
 
 
-    def setting(self):
-        """
-        Opens the settings and connects the signal
-        """
-        self.setting_dialog = SettingDialog(initial_dark_mode=self.is_dark_mode, parent=self)
-
-        # Connect the signal to a method in MainWindow and matches Checkbox's current theme.
-        self.setting_dialog.theme_change.connect(self.apply_theme)
-        self.setting_dialog.dark_box.setChecked(self.is_dark_mode)
-        self.setting_dialog.show()
-
-    def apply_theme(self, is_dark):
-        self.is_dark_mode = is_dark
-        #Checks if the is_dark is selected, and applies the correct theme.
-        if is_dark:
-            try:
-                with open(css_path, "r") as style:
-                    dark_style = style.read()
-                self.app.setStyleSheet(dark_style)
-            # If css is not found, prints an error message.
-            except FileNotFoundError:
-                print("File not found.")
-                dark_style = ""
-        else:
-            self.app.setStyleSheet("")
-
-
     def grouping(self):
         self.group.clear()
         # Selects the Items list and searches for each group type.
@@ -182,7 +153,7 @@ class MainWindow(QMainWindow):
                 new_var += f'and {v}'
             else:
                 new_var += f'{v}, '
-        self.result.setText(f"You recycled {amount} {resource} for {new_var} at {location}.")
+        self.result.setText(f"Recycling {amount} {resource} at {location} will give you {new_var}.")
 
 
 
