@@ -1,12 +1,14 @@
 import json
 from pathlib import Path
+
+from backend.directories import load_from_json
 from directories import json_path
 
 
 
 class ProgressionManager:
     def __init__(self):
-        self.progressions = json_path('progressions.json')
+        self.progressions = json_path / "progressions.json"
 
         #Setup initial information
         self.earned_scrap = 0
@@ -95,4 +97,3 @@ class ProgressionManager:
             self.item_unlocked.add(item_name)
             self.save_progression()
             print(f"Unlocked {item_name}.")
-

@@ -1,7 +1,9 @@
 import sys
 from PyQt6.QtCore import QEvent
 from PyQt6.QtGui import QIcon, QAction
+from progression import ProgressionManager
 from menu_dialogs import AboutDialog, HelpDialog
+from recycle_logger import RecycleLogManager
 from directories import icon_path, load_from_json, items
 from PyQt6.QtWidgets import (QComboBox, QPushButton, QApplication,
                              QMainWindow, QGridLayout, QWidget, QTextEdit, QStatusBar,
@@ -17,6 +19,9 @@ class MainWindow(QMainWindow):
         self.setWindowIcon(QIcon(str(icon_path["scrappy.ico"])))
         self.setGeometry(300, 300, 680, 280)
         self.is_dark_mode = False # Keeps track of the current theme.
+
+        self.progression = ProgressionManager()
+        self.recycle_logger = RecycleLogManager()
 
         # Error handling for JSON data.
         if not items.exists():
@@ -142,6 +147,18 @@ class MainWindow(QMainWindow):
             if location == 'Monument':
                 my_dict[key] = value * amount * 1.2
 
+        self.recycle_logger.add_entry(
+            item_name=resource,
+            quantity=amount,
+            location=location,
+            results=my_dict
+        )
+
+        # Gets the total scrap, and then saves it to the JSON file.
+        total_scrap = self.recycle_logger.total_earned_scrap()
+        self.progression.total_earned_scrap = total_scrap
+        self.progression.save_progression()
+
         # Join method that joins the calculated results together.
         split = ', '.join(f"{int(v)} {k}" for k, v in my_dict.items())
         new_split = [f"{int(v)} {k}" for k, v in my_dict.items()]
@@ -154,6 +171,7 @@ class MainWindow(QMainWindow):
             else:
                 new_var += f'{v}, '
         self.result.setText(f"Recycling {amount} {resource} at {location} will give you {new_var}.")
+        self.statusBar().showMessage(f"Total Scrap Recycled: {int(total_scrap)}", 5000)
 
 
 
